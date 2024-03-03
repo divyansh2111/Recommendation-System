@@ -25,7 +25,7 @@ sc = SparkSession.builder.appName("Product_Recommendation") \
 sc.sparkContext.setLogLevel("ERROR")
 
 #Load Models and files
-model = ALSModel.load(model_path)
+model = ALSModel.load('best_als_model')
 products = sc.read.csv("products.csv", header=True, inferSchema=True)
 users = sc.read.csv("users.csv", header=True, inferSchema=True)
 product_vectors = load_ml_component('product_vectors')
