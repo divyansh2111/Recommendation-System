@@ -78,7 +78,8 @@ def get_prod_vectors(als_model):
     # Normalize the vectors
     normalizer = Normalizer(inputCol='vector', outputCol='norm_vector')
     product_vectors = normalizer.transform(product_vectors)
-    save_ml_component(product_vectors, 'product_vectors')
+    product_vectors.write.parquet('product_vectors.parquet')
+
     return product_vectors
 
 def fit_LSH(product_vectors):
