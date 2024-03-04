@@ -28,7 +28,7 @@ sc.sparkContext.setLogLevel("ERROR")
 model = ALSModel.load('best_als_model')
 products = sc.read.csv("products.csv", header=True, inferSchema=True)
 users = sc.read.csv("users.csv", header=True, inferSchema=True)
-product_vectors = load_ml_component('product_vectors')
+product_vectors = sc.read.parquet('product_vectors.parquet')
 brp_model = load_ml_component('brp_model')
 
 
